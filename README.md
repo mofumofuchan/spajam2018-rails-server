@@ -1,24 +1,9 @@
-# README
+# SPAJAM 2018 rails server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Quick start
 
-Things you may want to cover:
+* `git clone https://github.com/mofumofuchan/spajam2018-rails-server.git`
+* `cd spajam2018-rails-server`
+* `bundle install --path vendor/bundle`
+* welcome!
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
