@@ -8,4 +8,5 @@ Objective.create(title: "今週2回ジムに行きます！",
                  end: 1.week.since,
                  menu: "ランニング/10km",
                  done: false,
+                 achievement: 10,
                  user: user1)

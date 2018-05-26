@@ -22,6 +22,7 @@ class ObjectivesController < ApplicationController
                     start: objective.start,
                     end: objective.end,
                     menu: objective.menu,
+                    achievement: objective.achievement,
                     done: objective.done,
                     updated_at: objective.updated_at
                   }}
@@ -46,6 +47,7 @@ class ObjectivesController < ApplicationController
         end: o.end,
         menu: o.menu,
         done: o.done,
+        achievement: o.achievement,
         updated_at: o.updated_at
       }}
     render json: {is_success: true,
@@ -81,6 +83,7 @@ class ObjectivesController < ApplicationController
         end: o.end,
         menu: o.menu,
         done: o.done,
+        achievement: o.achievement,
         updated_at: o.updated_at
       }}
     render json: {is_success: true,
@@ -104,6 +107,7 @@ class ObjectivesController < ApplicationController
                               end: post_param[:end],
                               menu: post_param[:menu],
                               done: false,
+                              achievement: 0,
                               user: user)
     objective.save!
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_184748) do
+ActiveRecord::Schema.define(version: 2018_05_26_222801) do
 
   create_table "objectives", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_05_26_184748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "start"
+    t.integer "achievement"
     t.index ["user_id"], name: "index_objectives_on_user_id"
   end
 
