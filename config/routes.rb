@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   scope "api" do
     scope "v0" do
       scope "objective" do
+        get "/",   to: "objectives#index"
         get ":id", to: "objectives#show"
+        post "/",  to: "objectives#create"
       end
     end
   end
