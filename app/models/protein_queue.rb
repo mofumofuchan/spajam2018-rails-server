@@ -1,0 +1,2 @@
+class ProteinQueue < ApplicationRecord
+end
