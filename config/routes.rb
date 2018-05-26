@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     scope "v0" do
       scope "user" do
         get ":id", to: "users#show"
+        get ":user_id/objectives", to: "objectives#user_objectives"
       end
       
       scope "objective" do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
       scope "protein" do
         get "/send/from/:from_id/to/:to_id", to: "protein#send_protein"
+        get "/check/:user_id", to: "protein#check_queue"
       end
     end
   end

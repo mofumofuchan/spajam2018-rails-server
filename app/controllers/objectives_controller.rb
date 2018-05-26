@@ -27,6 +27,7 @@ class ObjectivesController < ApplicationController
                   }}
   end
 
+
   def index
     objectives = Objective.all.order("updated_at DESC").limit(MAX_OBJECTIVES)
     if objectives.empty?
@@ -50,6 +51,42 @@ class ObjectivesController < ApplicationController
     render json: {is_success: true,
                   content: content}
   end
+
+
+  def user_objectives
+    user_id = params[:user_id].to_i
+    user = User.find_by_id(user_id)
+
+    if user.nil?
+      render json: {is_success: false,
+                    message: "not found"},
+             status: 404
+      return
+    end
+
+    objectives = Objective.where(user_id: user.id)
+
+    if objectives.empty?
+      render json: {is_success: true,
+                    content: []}
+      return
+    end
+
+    content = objectives.map { |o|
+      {
+        id: o.id,
+        title: o.title,
+        name: o.user.name,
+        start: o.start,
+        end: o.end,
+        menu: o.menu,
+        done: o.done,
+        updated_at: o.updated_at
+      }}
+    render json: {is_success: true,
+                  content: content}
+  end
+
 
   def create
     post_param = params.permit(:id, :title, :start, :end, :menu)

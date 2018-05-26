@@ -17,7 +17,9 @@ class ProteinController < ApplicationController
     to_user.save!
 
     # キューに追加
-    ProteinQueue.create!(from_user_id: from_user.id, to_user_id: to_user.id)
+    queue = ProteinQueue.new(from_user_id: from_user.id, to_user_id: to_user.id)
+    print(queue.valid?)
+    queue.save!
 
     render json: {is_success: true,
                   content: {
@@ -25,5 +27,37 @@ class ProteinController < ApplicationController
                     to_user_id:   to_user_id,
                     num_protein:  to_user.num_protein
                   }}
+  end
+
+
+  def check_queue
+    user_id = params[:user_id]
+    user = User.find_by_id(user_id)
+    if user.nil?
+      render json: {is_success: false,
+                    message: "not found"},
+             status: 404
+      return
+    end
+
+    poped = ProteinQueue.where(to_user_id: user.id)
+    if poped.empty?
+      render json: {is_success: true,
+                    content: []}
+      return
+    end
+
+    content = poped.map {|p|
+      {
+        from_user_id: p.from_user_id,
+        from_user_name: User.find(p.from_user_id).name,
+        to_user_id: p.to_user_id,
+        to_user_name: User.find(p.to_user_id).name
+      }}
+
+    poped.each {|p| p.destroy}
+
+    render json: {is_success: true,
+                  content: content}
   end
 end
