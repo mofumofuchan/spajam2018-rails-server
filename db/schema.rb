@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_180433) do
+ActiveRecord::Schema.define(version: 2018_05_26_184748) do
 
   create_table "objectives", force: :cascade do |t|
     t.string "title"
-    t.date "limit_date"
-    t.text "content"
+    t.date "end"
+    t.text "menu"
     t.boolean "done"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start"
     t.index ["user_id"], name: "index_objectives_on_user_id"
   end
 

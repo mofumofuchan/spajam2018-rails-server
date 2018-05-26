@@ -19,8 +19,9 @@ class ObjectivesController < ApplicationController
                     id: objective.id,
                     name: objective.user.name,
                     title: objective.title,
-                    limit_date: objective.limit_date,
-                    content: objective.content,
+                    start: objective.start,
+                    end: objective.end,
+                    menu: objective.menu,
                     done: objective.done,
                     updated_at: objective.updated_at
                   }}
@@ -40,8 +41,9 @@ class ObjectivesController < ApplicationController
         id: o.id,
         title: o.title,
         name: o.user.name,
-        limit_date: o.limit_date,
-        content: o.content,
+        start: o.start,
+        end: o.end,
+        menu: o.menu,
         done: o.done,
         updated_at: o.updated_at
       }}
@@ -50,9 +52,9 @@ class ObjectivesController < ApplicationController
   end
 
   def create
-    post_param = params.permit(:user_id, :title, :limit_date, :content)
+    post_param = params.permit(:id, :title, :start, :end, :menu)
 
-    user = User.find_by_id(post_param[:user_id])
+    user = User.find_by_id(post_param[:id])
     if user.nil?
       render json: {is_success: false,
                     message: "not found"},
@@ -61,8 +63,9 @@ class ObjectivesController < ApplicationController
     end
 
     objective = Objective.new(title: post_param[:title],
-                              limit_date: post_param[:limit_date],
-                              content: post_param[:content],
+                              start: post_param[:start],
+                              end: post_param[:end],
+                              menu: post_param[:menu],
                               done: false,
                               user: user)
     objective.save!
