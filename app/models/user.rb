@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  validates :name, length: { minimum: 3 }
+  has_many :objectives, dependent: :destroy
 end
