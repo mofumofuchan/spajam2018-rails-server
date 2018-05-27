@@ -1,7 +1,8 @@
-user1 = User.create(name: "小野純平", num_protein: 100)
-user2 = User.create(name: "沖本祐典", num_protein: 100)
-user3 = User.create(name: "道券裕二", num_protein: 100)
-user4 = User.create(name: "小島智樹", num_protein: 100)
+user1 = User.create(id: 1, name: "小野純平", num_protein: 100)
+user2 = User.create(id: 2, name: "小島智樹", num_protein: 100)
+user3 = User.create(id: 3, name: "道券裕二", num_protein: 100)
+user4 = User.create(id: 4, name: "沖本祐典", num_protein: 100)
+User.create(id: 5, name: "anonymous", num_protein: 100)
 
 Objective.create(title: "今週2回ジムに行きます！",
                  start: Date.today,
