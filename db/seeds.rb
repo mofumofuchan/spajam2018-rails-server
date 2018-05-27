@@ -17,7 +17,7 @@ Objective.create(title: "腹筋がんばります",
                  end: "2018-05-28",
                  menu: "腹筋-100回",
                  done: false,
-                 achievement: 0,
+                 achievement: 10,
                  user: user2)
 
 Objective.create(title: "上腕二頭筋鍛えます",
